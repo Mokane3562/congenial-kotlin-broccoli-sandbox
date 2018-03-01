@@ -3,7 +3,6 @@ package com.pokerplayer.model.card
 import java.util.Collections
 import java.util.ArrayList
 import java.util.ArrayDeque
-import java.util.Deque
 
 
 class Deck : Iterable<Card> {
