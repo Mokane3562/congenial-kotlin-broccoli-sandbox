@@ -1,6 +1,5 @@
 package com.pokerplayer.model.card
 
-import java.util.Collections
 import java.util.ArrayList
 import java.util.ArrayDeque
 
@@ -15,7 +14,7 @@ class Deck : Iterable<Card> {
                 list.add(Card(rank, suit))
             }
         }
-        Collections.shuffle(list)
+        list.shuffle()
         cards.addAll(list)
     }
 

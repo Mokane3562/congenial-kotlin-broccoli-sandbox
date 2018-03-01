@@ -16,9 +16,9 @@ object DeckTest : Spek({
                 assertThat(52, equalTo(deck.size))
             }
         }
-        on("Drawing a card"){
+        on("Drawing a card") {
             val card = deck.draw()
-            it("Should have 51 cards"){
+            it("Should have 51 cards") {
                 assertThat(51, equalTo(deck.size))
             }
         }

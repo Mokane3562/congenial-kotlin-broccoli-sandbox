@@ -3,8 +3,8 @@ package com.pokerplayer.model.hand
 import com.pokerplayer.model.card.Rank
 
 
-open class Combo (private val rank1: Rank, private val rank2: Rank, val isSuited: Boolean) {
-    val isConnector: Boolean
+open class Combo(private val rank1: Rank, private val rank2: Rank, val isSuited: Boolean) {
+    private val isConnector: Boolean
         get() = rank1.getDistance(rank2) < 5
 
     val isPair: Boolean

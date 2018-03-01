@@ -36,11 +36,11 @@ enum class Rank constructor(val id: Char, val displayName: String) {
     }
 
     fun isHigherThan(otherRank: Rank): Boolean {
-        return this.compareTo(otherRank) > 0
+        return this > otherRank
     }
 
     fun isLowerThan(otherRank: Rank): Boolean {
-        return this.compareTo(otherRank) > 0
+        return this > otherRank
     }
 
     /*@Nullable

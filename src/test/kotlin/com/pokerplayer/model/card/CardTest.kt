@@ -9,17 +9,17 @@ import org.jetbrains.spek.api.dsl.on
 
 
 object CardTest : Spek({
-    given("The ace of spades and the king of clubs"){
-        on("Construction of ace of spades"){
+    given("The ace of spades and the king of clubs") {
+        on("Construction of ace of spades") {
             val aceOfSpades = Card(Rank.ACE, Suit.SPADES)
-            it("Should have rank ACE and Suit SPADES"){
+            it("Should have rank ACE and Suit SPADES") {
                 assertThat(aceOfSpades.rank, equalTo(Rank.ACE))
                 assertThat(aceOfSpades.suit, equalTo(Suit.SPADES))
             }
         }
-        on("Construction of king of clubs"){
+        on("Construction of king of clubs") {
             val kingOfClubs = Card(Rank.KING, Suit.CLUBS)
-            it("Should have Rank King and Suit CLUBS"){
+            it("Should have Rank King and Suit CLUBS") {
                 assertThat(kingOfClubs.rank, equalTo(Rank.KING))
                 assertThat(kingOfClubs.suit, equalTo(Suit.CLUBS))
             }
