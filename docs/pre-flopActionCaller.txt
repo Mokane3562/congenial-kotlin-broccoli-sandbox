@@ -1,0 +1,11 @@
+players[]
+dealerIndex
+actionLimit=players.size+3
+
+getBlinds()
+for (actionOffset=3; actionOffset <= actionLimit; actionOffset++)
+    currentActionIndex = dealerIndex+actionOffset % players.size
+    if !player[currentActionIndex].isFolded
+        player[currentActionIndex].getAction
+        if Action is BET or RAISE
+            actionLimit = currentActionIndex + players.size-1
