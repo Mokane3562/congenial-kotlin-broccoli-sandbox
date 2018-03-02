@@ -45,7 +45,7 @@ object RankTest : Spek({
 
         on("Ordinal testing") {
             it("Should find that an ace is larger than a king") {
-                Assertions.assertTrue(Rank.ACE.isHigherThan(Rank.KING))
+                Assertions.assertTrue(Rank.ACE > Rank.KING)
             }
         }
     }

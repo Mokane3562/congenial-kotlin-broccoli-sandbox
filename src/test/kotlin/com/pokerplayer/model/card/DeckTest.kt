@@ -1,6 +1,5 @@
 package com.pokerplayer.model.card
 
-
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.jetbrains.spek.api.Spek
