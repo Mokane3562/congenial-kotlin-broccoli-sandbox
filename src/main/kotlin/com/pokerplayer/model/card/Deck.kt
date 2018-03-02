@@ -4,6 +4,8 @@ import java.util.*
 
 
 data class Deck(private val cards: ArrayDeque<Card> = ArrayDeque(52)) {
+    val size: Int
+        get() = cards.size
 
     init {
         val list = ArrayList<Card>(52)
@@ -15,9 +17,6 @@ data class Deck(private val cards: ArrayDeque<Card> = ArrayDeque(52)) {
         list.shuffle()
         cards.addAll(list)
     }
-
-    val size: Int
-        get() = cards.size
 
     fun draw(): Card {
         return cards.pop()
