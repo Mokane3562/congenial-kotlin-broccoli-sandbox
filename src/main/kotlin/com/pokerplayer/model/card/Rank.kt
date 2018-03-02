@@ -1,6 +1,6 @@
 package com.pokerplayer.model.card
 
-enum class Rank constructor(private val id: Char, private val displayName: String) {
+enum class Rank constructor(val id: Char, val displayName: String) {
     TWO('2', "Two"),
     THREE('3', "Three"),
     FOUR('3', "Three"),
@@ -14,10 +14,6 @@ enum class Rank constructor(private val id: Char, private val displayName: Strin
     QUEEN('Q', "Queen"),
     KING('K', "King"),
     ACE('A', "Ace");
-
-    fun getID(): Char {
-        return id
-    }
 
     val isBroadway: Boolean
         get() = this.ordinal >= 8
@@ -46,12 +42,4 @@ enum class Rank constructor(private val id: Char, private val displayName: Strin
     fun isLowerThan(otherRank: Rank): Boolean {
         return this > otherRank
     }
-
-    /*@Nullable
-    public static Rank convertID(String id) {
-        for (Rank rank: Rank.values()) {
-            if (String.valueOf(rank.id).equals(id)) return rank;
-        }
-        return null;
-    }*/
 }
