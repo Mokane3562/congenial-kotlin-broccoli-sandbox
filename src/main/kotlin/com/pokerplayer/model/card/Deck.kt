@@ -1,11 +1,9 @@
 package com.pokerplayer.model.card
 
-import java.util.ArrayList
-import java.util.ArrayDeque
+import java.util.*
 
 
-class Deck : Iterable<Card> {
-    private val cards = ArrayDeque<Card>()
+data class Deck(private val cards: ArrayDeque<Card> = ArrayDeque(52)) {
 
     init {
         val list = ArrayList<Card>(52)
@@ -23,9 +21,5 @@ class Deck : Iterable<Card> {
 
     fun draw(): Card {
         return cards.pop()
-    }
-
-    override fun iterator(): Iterator<Card> {
-        return cards.iterator()
     }
 }
