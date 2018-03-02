@@ -34,12 +34,4 @@ enum class Rank constructor(val id: Char, val displayName: String) {
         }
         return Math.abs(this.compareTo(otherRank))
     }
-
-    fun isHigherThan(otherRank: Rank): Boolean {
-        return this > otherRank
-    }
-
-    fun isLowerThan(otherRank: Rank): Boolean {
-        return this > otherRank
-    }
 }
