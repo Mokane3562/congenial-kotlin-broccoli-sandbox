@@ -3,7 +3,9 @@ package com.pokerplayer.model.card
 import java.util.*
 
 
-data class Deck(private val cards: ArrayDeque<Card> = ArrayDeque(52)) {
+class Deck() {
+    private val cards: ArrayDeque<Card> = ArrayDeque(52)
+
     val size: Int
         get() = cards.size
 
@@ -20,5 +22,9 @@ data class Deck(private val cards: ArrayDeque<Card> = ArrayDeque(52)) {
 
     fun draw(): Card {
         return cards.pop()
+    }
+
+    fun shuffle() {
+        //todo
     }
 }
