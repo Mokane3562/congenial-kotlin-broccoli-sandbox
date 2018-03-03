@@ -1,0 +1,9 @@
+smallBlind
+bigBlind
+gameType
+blindTimeInterval
+blindChangeAmount
+chipValues
+startingStackSize
+
+//basically whatever you want
