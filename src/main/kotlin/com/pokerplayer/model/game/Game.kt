@@ -4,23 +4,41 @@ import com.pokerplayer.model.card.Card
 import com.pokerplayer.model.card.Deck
 import com.pokerplayer.model.entities.Player
 import java.util.*
+import kotlin.collections.LinkedHashSet
 
 
-class Game(private val players: ArrayList<Player> = ArrayList(10), private val config: TableConfig = TableConfig()) {
+class Game(
+    val players: LinkedHashSet<Player>,
+    private val config: TableConfig = TableConfig()
+) {
     private val deck = Deck()
-    private val boardCards = ArrayList<Card>(5)
-    private var dealerIndex = 0
-    //private val state: State? = null
+    val board = ArrayList<Card>(5)
+    var dealerIndex = 0
 
-    fun setUp() {
-        for (i in 1..config.numPlayers) {
-            players.add(Player("Player$i", config.startingStackSize))
+    constructor(player1: Player, player2: Player) : this(LinkedHashSet(Arrays.asList(player1, player2)))
+
+    init {
+        if (players.size > config.maxPlayers) throw IllegalArgumentException("Too many players")
+        if (players.size < config.minPlayers) throw IllegalArgumentException("Too few players")
+        for (player: Player in players) {
+            player.chips = config.startingStackSize
         }
         dealerIndex = Random().nextInt(players.size)
     }
 
-    fun setUpRound() {
-        dealerIndex = dealerIndex+1 % players.size
+    fun addPlayer(player: Player) {
+        if (players.size + 1 > config.maxPlayers) throw IllegalArgumentException("Too many players")
+        players.add(player)
+    }
+
+    fun removePlayer(player: Player) {
+        if (players.size - 1 < config.minPlayers) throw IllegalArgumentException("Too few players")
+        players.remove(player)
+    }
+
+    fun newRound() {//todo test
+        board.removeAll(board)
+        dealerIndex = (dealerIndex + 1) % players.size
         deck.shuffle()
     }
 }

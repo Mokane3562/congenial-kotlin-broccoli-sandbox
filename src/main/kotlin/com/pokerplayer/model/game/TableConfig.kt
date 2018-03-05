@@ -5,5 +5,6 @@ data class TableConfig(
     val bigBlind: Int = 10,
     val gameType: String = "holdem", //fixme: enum
     val startingStackSize: Int = 1000,
-    val numPlayers: Int = 5
+    val maxPlayers: Int = 10,
+    val minPlayers: Int = 2
 )
