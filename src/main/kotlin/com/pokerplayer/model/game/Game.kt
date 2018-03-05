@@ -3,6 +3,7 @@ package com.pokerplayer.model.game
 import com.pokerplayer.model.card.Card
 import com.pokerplayer.model.card.Deck
 import com.pokerplayer.model.entities.Player
+import com.pokerplayer.model.hand.Pocket
 import java.util.*
 import kotlin.collections.LinkedHashSet
 
@@ -12,7 +13,7 @@ class Game(
     private val config: TableConfig = TableConfig()
 ) {
     private val deck = Deck()
-    val board = ArrayList<Card>(5)
+    val boardCards = ArrayList<Card>(5)
     var dealerIndex = 0
 
     constructor(player1: Player, player2: Player) : this(LinkedHashSet(Arrays.asList(player1, player2)))
@@ -37,8 +38,21 @@ class Game(
     }
 
     fun newRound() {//todo test
-        board.removeAll(board)
+        boardCards.removeAll(boardCards)
         dealerIndex = (dealerIndex + 1) % players.size
         deck.shuffle()
+    }
+
+    fun startRound() {//todo test
+        //get blinds
+        //set as preflop
+        for (player: Player in players) {
+            player.pocket = Pocket(deck.draw(), deck.draw())
+        }
+        //for each street
+            //while there are more actions to come
+                //request action from player
+            //advance street
+
     }
 }
