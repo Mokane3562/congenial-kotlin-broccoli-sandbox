@@ -1,10 +1,11 @@
 package com.pokerplayer.model.card
 
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Deck() {
-    private val cards: ArrayDeque<Card> = ArrayDeque(52)
+    private var cards: ArrayDeque<Card> = ArrayDeque(52)
 
     val size: Int
         get() = cards.size
@@ -24,7 +25,11 @@ class Deck() {
         return cards.pop()
     }
 
-    fun shuffle() {
-        //todo
+    fun shuffle() {//fixme yuck lots of garbage
+        val tempList = ArrayList(cards.toList())
+        tempList.shuffle()
+        val newDeck = ArrayDeque<Card>()
+        newDeck.addAll(tempList)
+        cards = newDeck
     }
 }
