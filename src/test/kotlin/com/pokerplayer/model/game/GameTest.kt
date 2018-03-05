@@ -39,10 +39,10 @@ object GameTest : Spek({
         }
         on("A new round") {
             game.dealerIndex = 0
-            game.board.add(Card(Rank.ACE, Suit.CLUBS))
+            game.boardCards.add(Card(Rank.ACE, Suit.CLUBS))
             game.newRound()
             it("Should clear all cards from the board") {
-                assertThat(game.board.size, equalTo(0))
+                assertThat(game.boardCards.size, equalTo(0))
             }
             it("Should correctly advance the dealer") {
                 assertThat(game.dealerIndex, equalTo(1))
