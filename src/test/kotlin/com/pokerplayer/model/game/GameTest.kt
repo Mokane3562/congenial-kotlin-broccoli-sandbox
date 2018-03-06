@@ -11,6 +11,7 @@ import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 import java.util.*
+import kotlin.collections.ArrayList
 
 object GameTest : Spek({
     given("A new game of Poker") {
@@ -19,14 +20,14 @@ object GameTest : Spek({
             it("Should have at least two players") {
                 assertThat(game.players.size, greaterThanOrEqualTo(2))
                 assertThat({
-                    val game = Game(LinkedHashSet(Arrays.asList(Player("Lonely Jim"))))
+                    val game = Game(ArrayList(Arrays.asList(Player("Lonely Jim"))))
                 }, throws<Exception>())
             }
             it("Should have at most ten players") {
                 assertThat(game.players.size, lessThanOrEqualTo(10))
                 assertThat({
                     val game = Game(
-                        LinkedHashSet(
+                        ArrayList(
                             Arrays.asList(
                                 Player("1"), Player("2"), Player("3"), Player("4"),
                                 Player("5"), Player("6"), Player("7"), Player("8"),
@@ -38,16 +39,17 @@ object GameTest : Spek({
             }
         }
         on("A new round") {
-            game.dealerIndex = 0
+            val dealer = game.dealer
+            val smallBlind = game.smallBlind
             game.boardCards.add(Card(Rank.ACE, Suit.CLUBS))
             game.newRound()
             it("Should clear all cards from the board") {
                 assertThat(game.boardCards.size, equalTo(0))
             }
             it("Should correctly advance the dealer") {
-                assertThat(game.dealerIndex, equalTo(1))
+                assertThat(game.dealer, equalTo(smallBlind))
                 game.newRound()
-                assertThat(game.dealerIndex, equalTo(0))
+                assertThat(game.dealer, equalTo(dealer))
             }
         }
     }

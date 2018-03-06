@@ -10,5 +10,7 @@ enum class ActionType {
     RETURN,
     SHOW,
     THINK,
-    WIN
+    WIN,
+    SMALL_BLIND,
+    BIG_BLIND
 }

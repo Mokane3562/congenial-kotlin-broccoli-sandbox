@@ -5,18 +5,26 @@ import com.pokerplayer.model.card.Deck
 import com.pokerplayer.model.entities.Player
 import com.pokerplayer.model.hand.Pocket
 import java.util.*
-import kotlin.collections.LinkedHashSet
 
 
 class Game(
-    val players: LinkedHashSet<Player>,
+    val players: ArrayList<Player>,
     private val config: TableConfig = TableConfig()
 ) {
-    private val deck = Deck()
     val boardCards = ArrayList<Card>(5)
-    var dealerIndex = 0
+    private val deck = Deck()
+    private val actionHistory = ArrayList<Action>()
+    private var currentStreet = PostFlopStreetType.PREFLOP
 
-    constructor(player1: Player, player2: Player) : this(LinkedHashSet(Arrays.asList(player1, player2)))
+    private var dealerIndex = 0
+    val dealer: Player
+        get() = players[dealerIndex]
+    val smallBlind: Player
+        get() = players[(dealerIndex + 1) % players.size]
+    val bigBlind: Player
+        get() = players[(dealerIndex + 2) % players.size]
+
+    constructor(player1: Player, player2: Player) : this(ArrayList(Arrays.asList(player1, player2)))
 
     init {
         if (players.size > config.maxPlayers) throw IllegalArgumentException("Too many players")
@@ -27,32 +35,42 @@ class Game(
         dealerIndex = Random().nextInt(players.size)
     }
 
-    fun addPlayer(player: Player) {
+    fun addPlayer(player: Player) {//testme
         if (players.size + 1 > config.maxPlayers) throw IllegalArgumentException("Too many players")
         players.add(player)
     }
 
-    fun removePlayer(player: Player) {
+    fun removePlayer(player: Player) {//testme
         if (players.size - 1 < config.minPlayers) throw IllegalArgumentException("Too few players")
         players.remove(player)
     }
 
-    fun newRound() {//todo test
+    fun newRound() {//testme
         boardCards.removeAll(boardCards)
         dealerIndex = (dealerIndex + 1) % players.size
+        currentStreet = PostFlopStreetType.PREFLOP
         deck.shuffle()
     }
 
-    fun startRound() {//todo test
-        //get blinds
-        //set as preflop
+    fun startGame() {//testme
+        newRound()
+        post(Action(smallBlind, ActionType.SMALL_BLIND, config.smallBlind))
+        post(Action(bigBlind, ActionType.BIG_BLIND, config.bigBlind))
         for (player: Player in players) {
             player.pocket = Pocket(deck.draw(), deck.draw())
         }
-        //for each street
+        //while there are more actions to come
+        //request action from player
+        for (postFlopStreet: PostFlopStreetType in PostFlopStreetType.values()) {
+            currentStreet = postFlopStreet
             //while there are more actions to come
                 //request action from player
-            //advance street
+        }
+    }
 
+    private fun post(action: Action) {//testme
+        action.actor.chips -= action.chipAmount
+        config.currentPot += action.chipAmount
+        actionHistory.add(action)
     }
 }

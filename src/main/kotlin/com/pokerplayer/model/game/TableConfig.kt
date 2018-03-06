@@ -6,5 +6,6 @@ data class TableConfig(
     val gameType: String = "holdem", //fixme: enum
     val startingStackSize: Int = 1000,
     val maxPlayers: Int = 10,
-    val minPlayers: Int = 2
+    val minPlayers: Int = 2,
+    var currentPot: Int = 0
 )
