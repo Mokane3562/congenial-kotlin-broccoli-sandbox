@@ -1,0 +1,6 @@
+Another option is to use the Array constructor that takes
+the array size and
+the function that can return the initial value of each array element given its index:
+
+// Creates an Array<String> with values ["0", "1", "4", "9", "16"]
+val asc = Array(5, { i -> (i * i).toString() })

@@ -1,10 +1,11 @@
-package com.pokerplayer.model.hand
-
-import com.pokerplayer.model.card.Rank
+package com.pokerplayer.model.util
 
 
-open class Combo(private val rank1: Rank, private val rank2: Rank, val isSuited: Boolean) {
-    private val isConnector: Boolean
+data class Combo(private val rank1: Rank, private val rank2: Rank, val isSuited: Boolean) {
+    constructor(leftCard: Card, rightCard: Card) :
+            this(leftCard.rank, rightCard.rank, leftCard.suit == rightCard.suit)
+
+    val isConnector: Boolean
         get() = rank1.getDistance(rank2) < 5
 
     val isPair: Boolean

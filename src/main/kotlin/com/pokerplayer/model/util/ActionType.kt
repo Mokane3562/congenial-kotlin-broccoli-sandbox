@@ -1,4 +1,4 @@
-package com.pokerplayer.model.game
+package com.pokerplayer.model.util
 
 enum class ActionType {
     BET,

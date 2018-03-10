@@ -1,4 +1,4 @@
-package com.pokerplayer.model.card
+package com.pokerplayer.model.util
 
 import java.util.*
 import kotlin.collections.ArrayList
@@ -11,12 +11,7 @@ class Deck() {
         get() = cards.size
 
     init {
-        val list = ArrayList<Card>(52)
-        for (suit in Suit.values()) {
-            for (rank in Rank.values()) {
-                list.add(Card(rank, suit))
-            }
-        }
+        val list = ArrayList(Card.list)
         list.shuffle()
         cards.addAll(list)
     }

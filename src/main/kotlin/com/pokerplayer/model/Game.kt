@@ -1,9 +1,12 @@
-package com.pokerplayer.model.game
+package com.pokerplayer.model
 
-import com.pokerplayer.model.card.Card
-import com.pokerplayer.model.card.Deck
+import com.pokerplayer.model.util.Card
+import com.pokerplayer.model.util.Deck
 import com.pokerplayer.model.entities.Player
-import com.pokerplayer.model.hand.Pocket
+import com.pokerplayer.model.game.Action
+import com.pokerplayer.model.game.PostFlopStreetType
+import com.pokerplayer.model.util.ActionType
+import com.pokerplayer.model.util.TableConfig
 import java.util.*
 
 
@@ -57,7 +60,8 @@ class Game(
         post(Action(smallBlind, ActionType.SMALL_BLIND, config.smallBlind))
         post(Action(bigBlind, ActionType.BIG_BLIND, config.bigBlind))
         for (player: Player in players) {
-            player.pocket = Pocket(deck.draw(), deck.draw())
+            player.leftCard = deck.draw()
+            player.rightCard = deck.draw()
         }
         //while there are more actions to come
         //request action from player

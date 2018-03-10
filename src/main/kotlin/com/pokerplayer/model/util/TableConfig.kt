@@ -1,4 +1,4 @@
-package com.pokerplayer.model.game
+package com.pokerplayer.model.util
 
 data class TableConfig(
     val smallBlind: Int = 5,

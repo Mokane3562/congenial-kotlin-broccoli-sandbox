@@ -1,5 +1,6 @@
-package com.pokerplayer.model.card
+package com.pokerplayer.model.util
 
+import com.pokerplayer.model.util.Rank
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it

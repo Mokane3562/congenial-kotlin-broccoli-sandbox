@@ -1,4 +1,4 @@
-package com.pokerplayer.model.card
+package com.pokerplayer.model.util
 
 enum class Suit(val id: Char, val displayName: String) {
     HEARTS('h', "Hearts"),

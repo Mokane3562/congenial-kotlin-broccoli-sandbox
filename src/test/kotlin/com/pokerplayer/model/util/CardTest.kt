@@ -1,7 +1,10 @@
-package com.pokerplayer.model.card
+package com.pokerplayer.model.util
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import com.pokerplayer.model.util.Card
+import com.pokerplayer.model.util.Rank
+import com.pokerplayer.model.util.Suit
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
