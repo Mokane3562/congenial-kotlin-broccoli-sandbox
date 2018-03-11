@@ -11,7 +11,7 @@ import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 
 
-object CardTest : Spek({
+object CardSpec : Spek({
     given("The ace of spades and the king of clubs") {
         on("Construction of ace of spades") {
             val aceOfSpades = Card(Rank.ACE, Suit.SPADES)
