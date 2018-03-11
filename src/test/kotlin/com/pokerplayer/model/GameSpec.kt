@@ -1,10 +1,11 @@
-package com.pokerplayer.model.game
+package com.pokerplayer.model
 
 import com.natpryce.hamkrest.*
 import com.natpryce.hamkrest.assertion.assertThat
-import com.pokerplayer.model.card.Card
-import com.pokerplayer.model.card.Rank
-import com.pokerplayer.model.card.Suit
+import com.pokerplayer.model.Game
+import com.pokerplayer.model.util.Card
+import com.pokerplayer.model.util.Rank
+import com.pokerplayer.model.util.Suit
 import com.pokerplayer.model.entities.Player
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
@@ -13,7 +14,7 @@ import org.jetbrains.spek.api.dsl.on
 import java.util.*
 import kotlin.collections.ArrayList
 
-object GameTest : Spek({
+object GameSpec : Spek({
     given("A new game of Poker") {
         val game = Game(Player("Jerry"), Player("Steve"))
         on("Construction") {

@@ -8,7 +8,7 @@ import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 
-object DeckTest : Spek({
+object DeckSpec : Spek({
     given("A Deck of cards") {
         val deck = Deck()
         on("Construction") {
