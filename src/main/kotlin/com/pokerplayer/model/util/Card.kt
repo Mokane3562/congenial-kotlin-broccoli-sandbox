@@ -5,7 +5,7 @@ import java.util.*
 data class Card(val rank: Rank, val suit: Suit) {
 
     companion object Cards {
-        val list: List<Card> = Arrays.asList(
+        val all: List<Card> = Arrays.asList(
             Card(
                 Rank.ACE,
                 Suit.SPADES
