@@ -22,5 +22,6 @@ class CardsTest {
     fun testCardsToList() {
         val list = Card.all
         Assert.assertArrayEquals(list.toTypedArray(), allCards.toTypedArray())
+        Assert.assertTrue(1==2)//fails
     }
 }
