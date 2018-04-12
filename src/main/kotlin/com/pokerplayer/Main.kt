@@ -1,20 +1,16 @@
-package com.pokerplayer.model
+package com.pokerplayer
 
-import com.pokerplayer.model.util.Card
-import com.pokerplayer.model.util.Deck
-import com.pokerplayer.model.entities.Player
-import com.pokerplayer.model.game.Action
-import com.pokerplayer.model.game.PostFlopStreetType
-import com.pokerplayer.model.util.ActionType
-import com.pokerplayer.model.util.TableConfig
+import com.pokerplayer.model.Card
+import com.pokerplayer.model.Player
+import com.pokerplayer.util.Deck
+import com.pokerplayer.util.TableConfig
 import java.util.*
 
-
-class Game(
-    val players: ArrayList<Player>,
-    private val config: TableConfig = TableConfig()
-) {
-    val boardCards = ArrayList<Card>(5)
+class Main() {
+    fun main(args : Array<String>) {
+        println("Hello, world!")
+    }
+    /*val boardCards = ArrayList<Card>(5)
     private val deck = Deck()
     private val actionHistory = ArrayList<Action>()
     private var currentStreet = PostFlopStreetType.PREFLOP
@@ -76,5 +72,5 @@ class Game(
         action.actor.chips -= action.chipAmount
         config.currentPot += action.chipAmount
         actionHistory.add(action)
-    }
+    }*/
 }
