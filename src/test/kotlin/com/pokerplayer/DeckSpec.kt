@@ -1,8 +1,8 @@
-package com.pokerplayer.model.util
+package com.pokerplayer
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import com.pokerplayer.model.util.Deck
+import com.pokerplayer.util.Deck
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it

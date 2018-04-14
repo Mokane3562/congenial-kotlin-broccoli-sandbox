@@ -1,6 +1,7 @@
-package com.pokerplayer.model.util
+/*
+package com.pokerplayer
 
-import com.pokerplayer.model.util.Rank
+import com.pokerplayer.model.Rank
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
@@ -50,4 +51,4 @@ object RankSpec : Spek({
             }
         }
     }
-})
+})*/

@@ -1,16 +1,15 @@
-package com.pokerplayer.model.util
+package com.pokerplayer
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import com.pokerplayer.model.util.Card
-import com.pokerplayer.model.util.Rank
-import com.pokerplayer.model.util.Suit
+import com.pokerplayer.model.Card
+import com.pokerplayer.model.Rank
+import com.pokerplayer.model.Suit
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
-import java.util.ArrayList
 
 
 object CardSpec : Spek({
@@ -43,7 +42,7 @@ object CardSpec : Spek({
         }
 
         on("collection") {
-            val all = Card.all
+            val all = Card.allCards
 
             it("should have 52 cards") {
                 assertThat(all.size, equalTo(52))
