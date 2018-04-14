@@ -15,12 +15,12 @@ enum class Rank(val sign: Char) {
     KING('K'),
     ACE('A');
 
-    operator fun plus(i: Int): Any {
-        return this.ordinal + i
-    }
-
     companion object {
         private val map = Rank.values().associateBy(Rank::sign);
-        fun fromChar(sign: Char) = map[sign] ?: throw IllegalArgumentException()
+        fun fromChar(sign: Char) = map[sign] ?: throw IllegalArgumentException("$sign")
+    }
+
+    override fun toString(): String {
+        return "$sign"
     }
 }

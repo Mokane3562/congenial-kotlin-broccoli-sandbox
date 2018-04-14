@@ -4,7 +4,7 @@ import java.util.*
 
 data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
 
-    constructor(pip: String) : this(Rank.fromChar(pip[0]), Suit.fromChar(pip[1])) {
+    constructor(pip: String) : this(Rank.fromChar(pip[0].toUpperCase()), Suit.fromChar(pip[1])) {
         if (pip.length != 2) {
             throw IllegalArgumentException()
         }
@@ -23,12 +23,6 @@ data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
             }
     }
 
-    val isBroadway: Boolean
-        get() = this.rank >= Rank.TEN
-
-    val isFace: Boolean
-        get() = this.rank == Rank.JACK || this.rank == Rank.QUEEN || this.rank == Rank.KING
-
     override fun compareTo(other: Card): Int {
         return if (this.rank == Rank.ACE && other.rank <= Rank.FIVE) {
             (-1).compareTo(other.rank.ordinal)
@@ -37,5 +31,9 @@ data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
         } else {
             this.rank.compareTo(other.rank)
         }
+    }
+
+    override fun toString(): String {
+        return "$rank$suit"
     }
 }
