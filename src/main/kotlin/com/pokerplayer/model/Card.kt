@@ -2,7 +2,13 @@ package com.pokerplayer.model
 
 import java.util.*
 
-data class Card(val rank: Rank, val suit: Suit) {
+data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
+
+    constructor(pip: String) : this(Rank.fromChar(pip[0]), Suit.fromChar(pip[1])) {
+        if (pip.length != 2) {
+            throw IllegalArgumentException()
+        }
+    }
 
     companion object Cards {
         val allCards: Set<Card>
@@ -18,22 +24,18 @@ data class Card(val rank: Rank, val suit: Suit) {
     }
 
     val isBroadway: Boolean
-        get() = this.rank.ordinal >= 8
+        get() = this.rank >= Rank.TEN
 
     val isFace: Boolean
         get() = this.rank == Rank.JACK || this.rank == Rank.QUEEN || this.rank == Rank.KING
 
-    fun getDistance(otherCard: Card): Int {
-        if (this.rank == otherCard.rank) {
-            return 0
-        } else if (this.rank == Rank.ACE || otherCard.rank == Rank.ACE) {
-            val distanceFromAce = this.rank.compareTo(otherCard.rank)
-            if (distanceFromAce > 6) { //rank1 is low ace
-                return otherCard.rank.compareTo(Rank.TWO) + 1
-            } else if (distanceFromAce < -6) { //rank2 is low ace
-                return this.rank.compareTo(Rank.TWO) + 1
-            }
+    override fun compareTo(other: Card): Int {
+        return if (this.rank == Rank.ACE && other.rank <= Rank.FIVE) {
+            (-1).compareTo(other.rank.ordinal)
+        } else if (this.rank <= Rank.FIVE && other.rank == Rank.ACE) {
+            this.rank.ordinal.compareTo(-1)
+        } else {
+            this.rank.compareTo(other.rank)
         }
-        return Math.abs(this.rank.compareTo(otherCard.rank))
     }
 }
