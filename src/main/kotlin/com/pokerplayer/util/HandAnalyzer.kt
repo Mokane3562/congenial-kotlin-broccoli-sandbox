@@ -26,7 +26,7 @@ object HandAnalyzer {
     fun isFace(card: Card): Boolean {
         return card.rank == Rank.JACK || card.rank == Rank.QUEEN || card.rank == Rank.KING
     }
-    
+
     fun analyzeHand(hand: Hand): String {
         val groups = hand.list.groupBy { it.rank }
         when (groups.size) {
@@ -50,28 +50,5 @@ object HandAnalyzer {
                 }
             }
         }
-    }
-}
-
-fun main(args: Array<String>) {
-    val hands = arrayOf(
-        Hand.build("2h 2d 2c Kc Qd"),
-        Hand.build("2h 5h 7d 8c 9s"),
-        Hand.build("Ah 2d 3c 4c 5d"),
-        Hand.build("2h 3h 2d 3c 3d"),
-        Hand.build("2h 7h 2d 3c 3d"),
-        Hand.build("2h 7h 7d 7c 7s"),
-        Hand.build("Th Jh Qh Kh Ah"),
-        Hand.build("4h 4s Ks 5d Ts"),
-        Hand.build("Qc Tc 7c 6c 4c")
-    )
-    try {
-        Hand.build("Ah Ah 7c 6c 4c")
-    }
-    catch (e: IllegalArgumentException) {
-        println(e.message)
-    }
-    for (hand in hands) {
-        println("$hand: ${HandAnalyzer.analyzeHand(hand)}")
     }
 }
