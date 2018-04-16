@@ -11,7 +11,7 @@ class Deck() {
         get() = cards.size
 
     init {
-        val list = ArrayList(Card.allCards)
+        val list = ArrayList(Card.getFullSet())
         list.shuffle()
         cards.addAll(list)
     }

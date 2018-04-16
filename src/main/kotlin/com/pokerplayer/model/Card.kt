@@ -4,23 +4,23 @@ import java.util.*
 
 data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
 
-    constructor(pip: String) : this(Rank.fromChar(pip[0].toUpperCase()), Suit.fromChar(pip[1])) {
-        if (pip.length != 2) {
-            throw IllegalArgumentException()
-        }
-    }
-
-    companion object Cards {
-        val allCards: Set<Card>
-            get() {
-                val set =  HashSet<Card>()
-                for (rank in Rank.values()) {
-                    for (suit in Suit.values()) {
-                        set.add(Card(rank, suit))
-                    }
+    companion object {
+        fun getFullSet(): Set<Card> {
+            val set =  HashSet<Card>()
+            for (rank in Rank.values()) {
+                for (suit in Suit.values()) {
+                    set.add(Card(rank, suit))
                 }
-                return set
             }
+            return set
+        }
+
+        fun fromString(stringRep:String): Card {
+            if (stringRep.length != 2) {
+                throw IllegalArgumentException()
+            }
+            return Card(Rank.fromChar(stringRep[0].toUpperCase()), Suit.fromChar(stringRep[1]))
+        }
     }
 
     override fun compareTo(other: Card): Int {
