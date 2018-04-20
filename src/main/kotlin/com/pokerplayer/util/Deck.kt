@@ -18,15 +18,6 @@ class Deck()
         shuffle()
     }
 
-    fun draw(): Card
-    {
-        if (nextCardIndex >= MAX_CARDS)
-        {
-            throw IllegalStateException("no cards left in the deck!")
-        }
-        return cards[nextCardIndex++]
-    }
-
     fun shuffle() {
         val tempList = ArrayList(cards.toList())
         tempList.shuffle()
@@ -37,5 +28,14 @@ class Deck()
     fun reset()
     {
         nextCardIndex = 0
+    }
+
+    fun draw(): Card
+    {
+        if (nextCardIndex >= MAX_CARDS)
+        {
+            throw IllegalStateException("no cards left in the deck!")
+        }
+        return cards[nextCardIndex++]
     }
 }
