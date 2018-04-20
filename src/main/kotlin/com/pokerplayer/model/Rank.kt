@@ -1,6 +1,7 @@
 package com.pokerplayer.model
 
-enum class Rank(val sign: Char) {
+enum class Rank(val sign: Char)
+{
     TWO('2'),
     THREE('3'),
     FOUR('4'),
@@ -15,12 +16,17 @@ enum class Rank(val sign: Char) {
     KING('K'),
     ACE('A');
 
-    companion object {
+    companion object
+    {
         private val map = Rank.values().associateBy(Rank::sign);
         fun fromChar(sign: Char) = map[sign] ?: throw IllegalArgumentException("$sign")
+
+        private val indexMap = Rank.values().associateBy(Rank::ordinal);
+        fun fromIndex(int: Int) = indexMap[int] ?: throw IllegalArgumentException("$int")
     }
 
-    override fun toString(): String {
+    override fun toString(): String
+    {
         return "$sign"
     }
 }
