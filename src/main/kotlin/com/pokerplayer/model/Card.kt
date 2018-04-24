@@ -5,15 +5,9 @@ import java.util.*
 data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
 
     companion object {
-        fun getFullSet(): Set<Card> {
-            val set =  HashSet<Card>()
-            for (rank in Rank.values()) {
-                for (suit in Suit.values()) {
-                    set.add(Card(rank, suit))
-                }
-            }
-            return set
-        }
+        fun getFullSet(): Set<Card> = Rank.values().flatMap {r ->
+            Suit.values().map { Card(r, it) }
+        }.toHashSet()
 
         fun fromString(stringRep:String): Card {
             if (stringRep.length != 2) {

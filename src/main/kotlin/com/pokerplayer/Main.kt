@@ -1,5 +1,6 @@
 package com.pokerplayer
 
+import com.pokerplayer.model.Card
 import com.pokerplayer.model.Hand
 import com.pokerplayer.util.HandAnalyzer
 import java.lang.IllegalArgumentException
@@ -25,6 +26,9 @@ fun main(args : Array<String>) {
     for (hand in hands) {
         println("$hand: ${HandAnalyzer.analyzeHand(hand)}")
     }
+    Card.getFullSet().sorted()
+            .map { c -> c.toString() }
+            .forEach { s -> println(s) }
 }
 /*val boardCards = ArrayList<Card>(5)
 private val deck = Deck()
