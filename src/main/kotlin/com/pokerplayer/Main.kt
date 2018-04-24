@@ -23,8 +23,8 @@ fun main(args : Array<String>) {
     catch (e: IllegalArgumentException) {
         println(e.message)
     }
-    for (hand in hands) {
-        println("$hand: ${HandAnalyzer.analyzeHand(hand)}")
+    hands.forEach {
+        println("$it: ${HandAnalyzer.analyzeHand(it)}")
     }
     Card.getFullSet().sorted()
             .map { c -> c.toString() }
