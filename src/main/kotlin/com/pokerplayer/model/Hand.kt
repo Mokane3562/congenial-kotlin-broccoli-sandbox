@@ -18,9 +18,8 @@ data class Hand(
             return Hand(cards[0], cards[1], cards[2], cards[3], cards[4])
         }
 
-        private fun pipsToCards(pips: List<String>): List<Card> {
-            return pips.map { pip -> Card.fromString(pip) }
-        }
+        private fun pipsToCards(pips: List<String>): List<Card> =
+                pips.map { pip -> Card.fromString(pip) }
     }
 
     override fun toString(): String {
