@@ -19,11 +19,7 @@ data class Hand(
         }
 
         private fun pipsToCards(pips: List<String>): List<Card> {
-            val cards = mutableListOf<Card>()
-            for (pip in pips) {
-                cards.add(Card.fromString(pip))
-            }
-            return cards
+            return pips.map { pip -> Card.fromString(pip) }
         }
     }
 
