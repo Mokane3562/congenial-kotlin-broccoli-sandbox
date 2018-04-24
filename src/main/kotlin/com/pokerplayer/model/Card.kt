@@ -1,7 +1,5 @@
 package com.pokerplayer.model
 
-import java.util.*
-
 data class Card(val rank: Rank, val suit: Suit) : Comparable<Card> {
 
     companion object {
