@@ -10,8 +10,10 @@ import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
+import org.junit.platform.runner.JUnitPlatform
+import org.junit.runner.RunWith
 
-
+@RunWith(JUnitPlatform::class)
 object CardSpec : Spek({
     given("The ace of spades and the king of clubs") {
         on("Construction of ace of spades") {

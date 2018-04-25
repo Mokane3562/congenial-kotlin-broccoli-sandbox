@@ -11,7 +11,7 @@ class Deck()
     private var nextCardIndex = 0
 
     val size: Int
-        get() = cards.size
+        get() = cards.size-nextCardIndex
 
     init
     {
