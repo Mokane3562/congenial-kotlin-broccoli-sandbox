@@ -4,7 +4,8 @@ import com.pokerplayer.model.PotentialHand
 import com.pokerplayer.util.HandAnalyzer
 import java.lang.IllegalArgumentException
 
-fun main(args : Array<String>) {
+fun main(args : Array<String>)
+{
     val hands = arrayOf(
         PotentialHand.fromString("2h 2d 2c Kc Qd"),
         PotentialHand.fromString("2h 5h 7d 8c 9s"),
@@ -16,13 +17,15 @@ fun main(args : Array<String>) {
         PotentialHand.fromString("4h 4s Ks 5d Ts"),
         PotentialHand.fromString("Qc Tc 7c 6c 4c")
     )
-    try {
+    try
+    {
         PotentialHand.fromString("Ah Ah 7c 6c 4c")
     }
-    catch (e: IllegalArgumentException) {
+    catch (e: IllegalArgumentException)
+    {
         println(e.message)
     }
-    hands.forEach {
+    hands.forEach{
         println("$it: ${HandAnalyzer.analyzeHand(it)}")
     }
 }

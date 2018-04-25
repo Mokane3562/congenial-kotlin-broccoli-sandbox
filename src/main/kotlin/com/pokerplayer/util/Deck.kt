@@ -18,7 +18,8 @@ class Deck()
         shuffle()
     }
 
-    fun shuffle() {
+    fun shuffle()
+    {
         val tempList = ArrayList(cards.toList())
         tempList.shuffle()
         cards = tempList.toTypedArray()
