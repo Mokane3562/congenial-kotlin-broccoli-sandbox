@@ -24,9 +24,4 @@ enum class Rank(val sign: Char)
         private val indexMap = Rank.values().associateBy(Rank::ordinal);
         fun fromIndex(int: Int) = indexMap[int] ?: throw IllegalArgumentException("$int")
     }
-
-    override fun toString(): String
-    {
-        return "$sign"
-    }
 }

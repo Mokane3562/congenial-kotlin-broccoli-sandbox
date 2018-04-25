@@ -25,24 +25,8 @@ data class Card(val rank: Rank, val suit: Suit)
         }.toHashSet()
     }
 
-    fun getDistance(other: Card): Int
-    {
-        return if (this.rank == Rank.ACE && other.rank <= Rank.FIVE)
-        {
-            (-1).compareTo(other.rank.ordinal)
-        }
-        else if (this.rank <= Rank.FIVE && other.rank == Rank.ACE)
-        {
-            this.rank.ordinal.compareTo(-1)
-        }
-        else
-        {
-            this.rank.compareTo(other.rank)
-        }
-    }
-
     override fun toString(): String
     {
-        return "$rank$suit"
+        return "${rank.sign}${suit.sign}"
     }
 }
