@@ -1,17 +1,23 @@
 package com.pokerplayer.model
 
-enum class Suit(val sign: Char) {
-    HEARTS('h'),
-    SPADES('s'),
+enum class Suit(val sign: Char)
+{
+    CLUBS('c'),
     DIAMONDS('d'),
-    CLUBS('c');
+    HEARTS('h'),
+    SPADES('s');
 
-    companion object {
-        private val map = Suit.values().associateBy(Suit::sign);
-        fun fromChar(sign: Char) = map[sign] ?: throw IllegalArgumentException("$sign")
+    companion object
+    {
+        private val signMap = Suit.values().associateBy(Suit::sign);
+        fun fromChar(sign: Char) = signMap[sign] ?: throw IllegalArgumentException("$sign")
+
+        private val indexMap = Suit.values().associateBy(Suit::ordinal);
+        fun fromIndex(int: Int) = indexMap[int] ?: throw IllegalArgumentException("$int")
     }
 
-    override fun toString(): String {
+    override fun toString(): String
+    {
         return "$sign"
     }
 }

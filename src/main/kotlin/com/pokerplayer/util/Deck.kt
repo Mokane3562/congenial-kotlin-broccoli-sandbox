@@ -4,27 +4,38 @@ import com.pokerplayer.model.Card
 import java.util.*
 import kotlin.collections.ArrayList
 
-class Deck() {
-    private var cards: ArrayDeque<Card> = ArrayDeque()
+class Deck()
+{
+    private val MAX_CARDS = 52
+    private var cards = Array<Card>(MAX_CARDS, {i -> Card(i)})
+    private var nextCardIndex = 0
 
     val size: Int
         get() = cards.size
 
-    init {
-        val list = ArrayList(Card.getFullSet())
-        list.shuffle()
-        cards.addAll(list)
-    }
-
-    fun draw(): Card {
-        return cards.pop()
+    init
+    {
+        shuffle()
     }
 
     fun shuffle() {
         val tempList = ArrayList(cards.toList())
         tempList.shuffle()
-        val newDeck = ArrayDeque<Card>()
-        newDeck.addAll(tempList)
-        cards = newDeck
+        cards = tempList.toTypedArray()
+        reset()
+    }
+
+    fun reset()
+    {
+        nextCardIndex = 0
+    }
+
+    fun draw(): Card
+    {
+        if (nextCardIndex >= MAX_CARDS)
+        {
+            throw IllegalStateException("no cards left in the deck!")
+        }
+        return cards[nextCardIndex++]
     }
 }
