@@ -1,13 +1,14 @@
-package com.pokerplayer.model.card
+package com.pokerplayer
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import com.pokerplayer.util.Deck
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
 import org.jetbrains.spek.api.dsl.on
 
-object DeckTest : Spek({
+object DeckSpec : Spek({
     given("A Deck of cards") {
         val deck = Deck()
         on("Construction") {
