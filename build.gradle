@@ -1,7 +1,12 @@
 group 'DaBys'
 version '0.0.1-SNAPSHOT'
 
-apply plugin: 'org.junit.platform.gradle.plugin'
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repository.jetbrains.com/all'
+    }
+}
 
 buildscript {
     ext.kotlin_version = '1.2.30'
@@ -18,29 +23,42 @@ buildscript {
     }
 }
 
+apply plugin: 'java'
 apply plugin: 'kotlin'
-
-repositories {
-    mavenCentral()
-    maven {
-        url 'http://repository.jetbrains.com/all'
-    }
-}
+apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 junitPlatform {
     filters {
         engines {
-            include 'spek'
+            include 'spek', 'junit-jupiter', 'junit-vintage'
         }
     }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.spek:spek-api:1.0.89"
+    compile 'com.google.guava:guava:19.0'
+    compile 'org.joda:joda-money:0.11'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.5.2'
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testCompile 'org.junit.platform:junit-platform-runner:1.0.0-M2'
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.0-M2"
     testCompile 'org.jetbrains.spek:spek-api:1.1.5'
     testCompile group: 'com.natpryce', name: 'hamkrest', version: '1.1.0.0'
+
     testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.5'
+    testRuntime "org.junit.vintage:junit-vintage-engine:4.12.0-M2"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.0-M2"
+
     testImplementation 'org.junit.platform:junit-platform-runner:1.0.0'
     testImplementation 'org.junit.platform:junit-platform-launcher:1.0.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
 }
