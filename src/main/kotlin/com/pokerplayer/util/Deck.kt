@@ -21,7 +21,7 @@ class Deck()
     fun shuffle() {
         val tempList = ArrayList(cards.toList())
         tempList.shuffle()
-        cards = tempList.toArray() as Array<Card>
+        cards = tempList.toTypedArray()
         reset()
     }
 
