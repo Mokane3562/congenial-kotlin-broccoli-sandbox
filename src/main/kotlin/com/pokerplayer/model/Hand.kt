@@ -14,7 +14,7 @@ data class Hand(val cards: Array<Card>)
         }
 
         private fun pipsToCards(pips: List<String>): List<Card> =
-                pips.map { pip -> Card.fromString(pip)}
+                pips.map { pip -> Card(pip)}
     }
 
     override fun toString(): String {

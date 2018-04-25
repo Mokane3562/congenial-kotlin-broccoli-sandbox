@@ -26,9 +26,6 @@ fun main(args : Array<String>) {
     hands.forEach {
         println("$it: ${HandAnalyzer.analyzeHand(it)}")
     }
-    Card.getFullSet().sorted()
-            .map { c -> c.toString() }
-            .forEach { s -> println(s) }
 }
 /*val boardCards = ArrayList<Card>(5)
 private val deck = Deck()
