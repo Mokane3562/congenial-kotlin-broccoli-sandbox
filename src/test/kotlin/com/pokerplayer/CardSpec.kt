@@ -42,7 +42,7 @@ object CardSpec : Spek({
         }
 
         on("collection") {
-            val all = Card.allCards
+            val all = Card.getFullSet()
 
             it("should have 52 cards") {
                 assertThat(all.size, equalTo(52))

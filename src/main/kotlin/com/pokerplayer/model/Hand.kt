@@ -13,13 +13,8 @@ data class Hand(val cards: Array<Card>)
             return Hand(tempCards.toTypedArray())
         }
 
-        private fun pipsToCards(pips: List<String>): List<Card> {
-            val cards = mutableListOf<Card>()
-            for (pip in pips) {
-                cards.add(Card(pip))
-            }
-            return cards
-        }
+        private fun pipsToCards(pips: List<String>): List<Card> =
+                pips.map { pip -> Card.fromString(pip)}
     }
 
     override fun toString(): String {
