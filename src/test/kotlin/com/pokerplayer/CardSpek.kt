@@ -7,7 +7,7 @@ import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.*
 import kotlin.test.assertEquals
 
-object CardSpec : Spek({
+object CardSpek : Spek({
     describe("a card")
     {
         var card: Card

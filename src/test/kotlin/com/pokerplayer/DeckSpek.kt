@@ -8,7 +8,7 @@ import com.pokerplayer.util.Deck
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.*
 
-object DeckSpec : Spek({
+object DeckSpek : Spek({
     given("a deck of cards")
     {
         val deck = Deck()
