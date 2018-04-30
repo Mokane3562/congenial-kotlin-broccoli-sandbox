@@ -1,7 +1,6 @@
 package com.pokerplayer.util
 
 import com.pokerplayer.model.Card
-import java.util.*
 import kotlin.collections.ArrayList
 
 class Deck()
@@ -12,11 +11,6 @@ class Deck()
 
     val size: Int
         get() = cards.size-nextCardIndex
-
-    init
-    {
-        shuffle()
-    }
 
     fun shuffle() {
         val tempList = ArrayList(cards.toList())

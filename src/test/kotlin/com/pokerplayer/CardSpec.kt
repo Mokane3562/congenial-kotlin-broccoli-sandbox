@@ -5,7 +5,6 @@ import com.pokerplayer.model.Rank
 import com.pokerplayer.model.Suit
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.*
-import java.lang.reflect.Constructor
 import kotlin.test.assertEquals
 
 object CardSpec : Spek({
