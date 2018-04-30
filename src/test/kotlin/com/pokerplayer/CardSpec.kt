@@ -4,45 +4,50 @@ import com.pokerplayer.model.Card
 import com.pokerplayer.model.Rank
 import com.pokerplayer.model.Suit
 import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.describe
-import org.jetbrains.spek.api.dsl.given
-import org.jetbrains.spek.api.dsl.it
-import org.jetbrains.spek.api.dsl.on
+import org.jetbrains.spek.api.dsl.*
+import java.lang.reflect.Constructor
+import kotlin.test.assertEquals
 
 object CardSpec : Spek({
-    given("The ace of spades and the king of clubs") {
-        on("Construction of ace of spades") {
+    describe("a card")
+    {
+        var card: Card
+        context("Ace of Spades")
+        {
             val aceOfSpades = Card(Rank.ACE, Suit.SPADES)
-            it("Should have rank ACE and Suit SPADES") {
-                assert(aceOfSpades.rank == Rank.ACE)
-                assert(aceOfSpades.suit== Suit.SPADES)
-            }
-        }
-        on("Construction of king of clubs") {
-            val kingOfClubs = Card(Rank.KING, Suit.CLUBS)
-            it("Should have Rank King and Suit CLUBS") {
-                assert(kingOfClubs.rank == Rank.KING)
-                assert(kingOfClubs.suit == Suit.CLUBS)
-            }
-        }
-    }
-
-    describe("The Cards") {
-        fun allCards(): Set<Card> {
-            val cards = HashSet<Card>()
-            for (suit in Suit.values()) {
-                for (rank in Rank.values()) {
-                    cards.add(Card(rank, suit))
+            given("an integer representation")
+            {
+                val index = 51
+                on("creation"){
+                    card = Card(index)
+                    it("should exist")
+                    {
+                        assertEquals(card, aceOfSpades)
+                    }
+                    it("should have a string representation")
+                    {
+                        assertEquals(card.toString(), aceOfSpades.toString())
+                    }
                 }
             }
-            return cards
         }
-
-        on("collection") {
-            val all = Card.getFullSet()
-
-            it("should have 52 cards") {
-                assert(all.size == 52)
+        context("Seven of Clubs")
+        {
+            val sevenOfClubs = Card(Rank.SEVEN, Suit.CLUBS)
+            given("a string representation")
+            {
+                val pip = "7c"
+                on("creation"){
+                    card = Card(pip)
+                    it("should exist")
+                    {
+                        assertEquals(card, sevenOfClubs)
+                    }
+                    it("should have an integer representation")
+                    {
+                        assertEquals(card.index, sevenOfClubs.index)
+                    }
+                }
             }
         }
     }
