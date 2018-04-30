@@ -7,7 +7,6 @@ import com.pokerplayer.model.Card
 import com.pokerplayer.util.Deck
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.*
-import kotlin.test.todo
 
 object DeckSpec : Spek({
     given("a deck of cards")
@@ -45,7 +44,7 @@ object DeckSpec : Spek({
             deck.shuffle()
             xit("should be very well shuffled")
             {
-                todo { "How should we test this?" }
+                //todo: How should we test this?
             }
         }
     }
