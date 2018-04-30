@@ -17,7 +17,8 @@ object CardSpek : Spek({
             given("an integer representation")
             {
                 val index = 51
-                on("creation"){
+                on("creation")
+                {
                     card = Card(index)
                     it("should exist")
                     {
@@ -36,7 +37,8 @@ object CardSpek : Spek({
             given("a string representation")
             {
                 val pip = "7c"
-                on("creation"){
+                on("creation")
+                {
                     card = Card(pip)
                     it("should exist")
                     {
