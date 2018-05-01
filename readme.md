@@ -1,6 +1,6 @@
 # PokerBot-kt-Gradle
 
-A poker odds and game state evaluation tool.
+A poker odds and game state evaluation tool or advisor.
 
 ## Getting Started
 
@@ -8,15 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Intellij with Spek plugin
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
 
