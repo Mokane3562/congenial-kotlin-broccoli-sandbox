@@ -1,7 +1,5 @@
 package com.pokerplayer.model
 
-import java.util.*
-
 data class Card(val rank: Rank, val suit: Suit)
 {
     private val MAX_RANKS = 13
@@ -14,7 +12,7 @@ data class Card(val rank: Rank, val suit: Suit)
     {
         if (pip.length != 2)
         {
-            throw IllegalArgumentException("$pip should be two characters")
+            throw IllegalArgumentException("$pip should be two characters")//todo: Constructors should not fail
         }
     }
 
@@ -23,22 +21,6 @@ data class Card(val rank: Rank, val suit: Suit)
         fun getFullSet(): Set<Card> = Rank.values().flatMap {r ->
             Suit.values().map { Card(r, it) }
         }.toHashSet()
-    }
-
-    fun getDistance(other: Card): Int
-    {
-        return if (this.rank == Rank.ACE && other.rank <= Rank.FIVE)
-        {
-            (-1).compareTo(other.rank.ordinal)
-        }
-        else if (this.rank <= Rank.FIVE && other.rank == Rank.ACE)
-        {
-            this.rank.ordinal.compareTo(-1)
-        }
-        else
-        {
-            this.rank.compareTo(other.rank)
-        }
     }
 
     override fun toString(): String

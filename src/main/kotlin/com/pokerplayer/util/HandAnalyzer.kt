@@ -8,7 +8,7 @@ import java.lang.IllegalArgumentException
 object HandAnalyzer {
     fun isStraight(hand: Hand): Boolean {
         val sortedCards = hand.list.sortedBy { it.rank }
-        if (sortedCards[0].getDistance(sortedCards[4]) == -4) return true
+        if (getDistance(sortedCards[0], sortedCards[4]) == -4) return true
         if (sortedCards[4].rank == Rank.ACE && sortedCards[0].rank == Rank.TWO && sortedCards[3].rank == Rank.FIVE) return true
         return false
     }
@@ -25,6 +25,22 @@ object HandAnalyzer {
 
     fun isFace(card: Card): Boolean {
         return card.rank == Rank.JACK || card.rank == Rank.QUEEN || card.rank == Rank.KING
+    }
+
+    fun getDistance(first: Card, second: Card): Int
+    {
+        return if (first.rank == Rank.ACE && second.rank <= Rank.FIVE)
+        {
+            (-1).compareTo(second.rank.ordinal)
+        }
+        else if (first.rank <= Rank.FIVE && second.rank == Rank.ACE)
+        {
+            first.rank.ordinal.compareTo(-1)
+        }
+        else
+        {
+            first.rank.compareTo(second.rank)
+        }
     }
 
     fun analyzeHand(hand: Hand): String {
