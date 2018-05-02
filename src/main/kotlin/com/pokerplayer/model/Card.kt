@@ -4,7 +4,7 @@ data class Card(val rank: Rank, val suit: Suit)
 {
     private val MAX_RANKS = 13
     val index: Int
-        get() = (MAX_RANKS*this.suit.ordinal)+this.rank.ordinal;
+        get() = (MAX_RANKS*this.suit.ordinal)+this.rank.ordinal
 
     constructor(index: Int) : this(Rank.fromIndex(index%13), Suit.fromIndex(index/13))
 
@@ -18,8 +18,8 @@ data class Card(val rank: Rank, val suit: Suit)
 
     companion object
     {
-        fun getFullSet(): Set<Card> = Rank.values().flatMap {r ->
-            Suit.values().map { Card(r, it) }
+        fun getFullSet(): Set<Card> = Rank.values().flatMap {
+            r -> Suit.values().map { Card(r, it) }
         }.toHashSet()
     }
 
