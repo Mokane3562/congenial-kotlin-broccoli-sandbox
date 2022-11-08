@@ -12,7 +12,8 @@ class Deck()
     val size: Int
         get() = cards.size-nextCardIndex
 
-    fun shuffle() {
+    fun shuffle()
+    {
         val tempList = ArrayList(cards.toList())
         tempList.shuffle()
         cards = tempList.toTypedArray()

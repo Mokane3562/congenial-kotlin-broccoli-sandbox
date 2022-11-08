@@ -1,29 +1,31 @@
 package com.pokerplayer
 
-import com.pokerplayer.model.Card
-import com.pokerplayer.model.Hand
+import com.pokerplayer.model.PotentialHand
 import com.pokerplayer.util.HandAnalyzer
 import java.lang.IllegalArgumentException
 
-fun main(args : Array<String>) {
+fun main(args : Array<String>)
+{
     val hands = arrayOf(
-        Hand.fromString("2h 2d 2c Kc Qd"),
-        Hand.fromString("2h 5h 7d 8c 9s"),
-        Hand.fromString("Ah 2d 3c 4c 5d"),
-        Hand.fromString("2h 3h 2d 3c 3d"),
-        Hand.fromString("2h 7h 2d 3c 3d"),
-        Hand.fromString("2h 7h 7d 7c 7s"),
-        Hand.fromString("Th Jh Qh Kh Ah"),
-        Hand.fromString("4h 4s Ks 5d Ts"),
-        Hand.fromString("Qc Tc 7c 6c 4c")
+        PotentialHand.fromString("2h 2d 2c Kc Qd"),
+        PotentialHand.fromString("2h 5h 7d 8c 9s"),
+        PotentialHand.fromString("Ah 2d 3c 4c 5d"),
+        PotentialHand.fromString("2h 3h 2d 3c 3d"),
+        PotentialHand.fromString("2h 7h 2d 3c 3d"),
+        PotentialHand.fromString("2h 7h 7d 7c 7s"),
+        PotentialHand.fromString("Th Jh Qh Kh Ah"),
+        PotentialHand.fromString("4h 4s Ks 5d Ts"),
+        PotentialHand.fromString("Qc Tc 7c 6c 4c")
     )
-    try {
-        Hand.fromString("Ah Ah 7c 6c 4c")
+    try
+    {
+        PotentialHand.fromString("Ah Ah 7c 6c 4c")
     }
-    catch (e: IllegalArgumentException) {
+    catch (e: IllegalArgumentException)
+    {
         println(e.message)
     }
-    hands.forEach {
+    hands.forEach{
         println("$it: ${HandAnalyzer.analyzeHand(it)}")
     }
 }

@@ -1,23 +1,81 @@
 package com.pokerplayer.model
 
-data class Hand(val cards: Array<Card>)
+sealed class Hand : Comparable<Hand>
 {
-    val list: List<Card>
-        get() = cards.asList()
-
-    companion object {
-        fun fromString(stringRep: String): Hand {
-            val split = stringRep.split(' ').filterNot { it == "" }.distinct()
-            if (split.size != 5) throw IllegalArgumentException("$split should have 5 items")
-            val tempCards = pipsToCards(split)
-            return Hand(tempCards.toTypedArray())
-        }
-
-        private fun pipsToCards(pips: List<String>): List<Card> =
-                pips.map { pip -> Card(pip)}
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+}
 
-    override fun toString(): String {
-        return "$list"
+data class HighCard(val rank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class OnePair(val rank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class TwoPair(val highRank: Rank, val lowRank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class ThreeOfAKind(val rank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class Straight(val highRank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class Flush(val highestRank: Rank, val suit: Suit) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class FullHouse(val tripleRank: Rank, val doubleRank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class FourOfAKind(val rank: Rank) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+data class StraightFlush(val highRank: Rank, val suit: Suit) : Hand()
+{
+    override fun compareTo(other: Hand): Int
+    {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

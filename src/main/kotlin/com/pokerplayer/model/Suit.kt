@@ -15,9 +15,4 @@ enum class Suit(val sign: Char)
         private val indexMap = Suit.values().associateBy(Suit::ordinal);
         fun fromIndex(int: Int) = indexMap[int] ?: throw IllegalArgumentException("$int")
     }
-
-    override fun toString(): String
-    {
-        return "$sign"
-    }
 }
